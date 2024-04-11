@@ -4,7 +4,7 @@ import "./Banner.css";
 import axios from "./axios";
 import requests from "./requests";
 
-const apiKey = "API_KEY_HERE";
+const apiKey = process.env.API_KEY;
 function Banner() {
   const [trailerUrl, setTrailerUrl] = useState("");
   const [movie, setMovie] = useState([]);
