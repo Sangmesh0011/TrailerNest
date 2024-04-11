@@ -5,7 +5,7 @@ import "./Row.css";
 import axios from "./axios";
 const base_url = "https://image.tmdb.org/t/p/w500/";
 
-const apiKey = "API_KEY_HERE";
+const apiKey = process.env.API_KEY;
 
 
 function Row({ title, fetchUrl }) {
