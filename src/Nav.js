@@ -4,11 +4,7 @@ import "./Nav.css";
 function Nav() {
   return (
     <div className="navbar">
-      <img
-        src="/logo.png"
-        alt="TRAILER NEST"
-        className="logo"
-      />
+      
     </div>
   );
 }

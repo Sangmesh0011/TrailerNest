@@ -1,26 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState }  from 'react'
 import { CgClose } from "react-icons/cg";
 import YouTube from "react-youtube";
 import "./Row.css";
 import axios from "./axios";
-const base_url = "https://image.tmdb.org/t/p/w500/";
 
 const apiKey = process.env.REACT_APP_API_KEY;
+const base_url = "https://image.tmdb.org/t/p/w500/";
 
-
-function Row({ title, fetchUrl }) {
+const UtilScreen = ({search}) => {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
   const [showPlayer, setShowPlayer] = useState(false);
 
   useEffect(() => {
     async function getData() {
-      const request = await axios.get(fetchUrl);
+      const request = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${search}&api_key=${apiKey}`);
       setMovies(request.data.results);
       return request;
     }
     getData();
-  }, [fetchUrl]);
+  }, [search]);
 
   const opts = {
     height: "400",
@@ -53,7 +52,7 @@ function Row({ title, fetchUrl }) {
   return (
     <div className="row">
       <div className="title_poster">
-        <h2>{title}</h2>
+        <h2>Search Results</h2>
       </div>
       <div className="row_of_movies">
         {movies.map((movie) => (
@@ -71,4 +70,4 @@ function Row({ title, fetchUrl }) {
   );
 }
 
-export default Row;
+export default UtilScreen
