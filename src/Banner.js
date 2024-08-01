@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react";
 import YouTube from "react-youtube";
 import "./Banner.css";
-import axios from "./axios";
+import axios from "axios";
 import requests from "./requests";
 import { CgClose } from "react-icons/cg";
+// import axios from "axios";
+
+// const instance=axios.create(
+//     {
+//         baseURL: "https://api.themoviedb.org/3",
+//     }
+// );
+
+// export default instance;
 
 const apiKey = process.env.REACT_APP_API_KEY;
 function Banner() {
@@ -45,7 +54,7 @@ function Banner() {
   const handleClick = async (movie) => {
     try {
       const response = await axios.get(
-        `/movie/${movie.id}/videos?api_key=${apiKey}`
+        `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${apiKey}`
       );
       if (response.data.results.length > 0) {
         console.log("Banner url",response.data.results[0].key)

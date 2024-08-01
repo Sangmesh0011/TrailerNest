@@ -2,7 +2,7 @@ import React, { useEffect, useState }  from 'react'
 import { CgClose } from "react-icons/cg";
 import YouTube from "react-youtube";
 import "./Row.css";
-import axios from "./axios";
+import axios from "axios";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 const base_url = "https://image.tmdb.org/t/p/w500/";
@@ -35,7 +35,7 @@ const UtilScreen = ({search}) => {
   const handleClick = async (movie) => {
     try {
       const response = await axios.get(
-        `/movie/${movie.id}/videos?api_key=${apiKey}`
+        `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${apiKey}`
       );
       if (response.data.results.length > 0) {
         setTrailerUrl(response.data.results[0].key);
